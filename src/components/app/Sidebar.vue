@@ -8,7 +8,6 @@
       :to="link.url"
       exact
     >
-<!--      1-09-->
       <a href="#" class="waves-effect waves-orange pointer">{{link.title}}</a>
     </router-link>
   </ul>
