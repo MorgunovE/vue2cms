@@ -16,7 +16,6 @@
     },
     watch: {
       error(fbError) {
-        // 2-58
         this.$error(messages[fbError.code] || 'Unknown error')
       }
     }
