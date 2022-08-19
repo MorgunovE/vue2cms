@@ -4,83 +4,51 @@
       <h3>Categories</h3>
     </div>
     <section>
-      <div class="row">
-        <div class="col s12 m6">
-          <div>
-            <div class="page-subtitle">
-              <h4>Create</h4>
-            </div>
-            
-            <form>
-              <div class="input-field">
-                <input
-                  id="name"
-                  type="text"
-                >
-                <label for="name">Name</label>
-                <span class="helper-text invalid">Enter name</span>
-              </div>
-              
-              <div class="input-field">
-                <input
-                  id="limit"
-                  type="number"
-                >
-                <label for="limit">Limit</label>
-                <span class="helper-text invalid">Limit number</span>
-              </div>
-              
-              <button class="btn waves-effect waves-light" type="submit">
-                Create
-                <i class="material-icons right">send</i>
-              </button>
-            </form>
-          </div>
-        </div>
-        <div class="col s12 m6">
-          <div>
-            <div class="page-subtitle">
-              <h4>Edit</h4>
-            </div>
-            
-            <form>
-              <div class="input-field">
-                <select>
-                  <option>Category</option>
-                </select>
-                <label>Choose category</label>
-              </div>
-              
-              <div class="input-field">
-                <input type="text" id="name">
-                <label for="name">Name</label>
-                <span class="helper-text invalid">TITLE</span>
-              </div>
-              
-              <div class="input-field">
-                <input
-                  id="limit"
-                  type="number"
-                >
-                <label for="limit">Limit</label>
-                <span class="helper-text invalid">LIMIT</span>
-              </div>
-              
-              <button class="btn waves-effect waves-light" type="submit">
-                Update
-                <i class="material-icons right">send</i>
-              </button>
-            </form>
-          </div>
-        </div>
+      <Loader v-if="loading"/>
+      <div v-else class="row">
+        <CategoryCreate @created="addNewCategory"/>
+        <CategoryEdit
+          v-if="categories.length"
+          :categories="categories"
+          :key="categories.length + updateCount"
+          @updated="updateCategories"
+        />
+        <p v-else class="center">Haven't categories</p>
       </div>
     </section>
   </div>
+<!--  0-36-->
 </template>
 
 <script>
+  import CategoryCreate from '@/components/CategoryCreate'
+  import CategoryEdit from '@/components/CategoryEdit'
+  
   export default {
-    name: "Categories"
+    name: "Categories",
+    data() {
+      return {
+        categories: [],
+        loading: true,
+        updateCount: 0
+      }
+    },
+    async mounted() {
+      this.categories = await this.$store.dispatch('fetchCategories')
+      this.loading = false
+    },
+    methods: {
+      addNewCategory(category) {
+        this.categories.push(category)
+      },
+      updateCategories(categoryData) {
+        const idx = this.categories.findIndex(category => category.id === categoryData.id)
+        this.categories[idx].title = categoryData.title
+        this.categories[idx].limit = categoryData.limit
+        this.updateCount++
+      }
+    },
+    components: {CategoryEdit, CategoryCreate}
   }
 </script>
 
