@@ -39,9 +39,9 @@
         this.loading = true
         this.currency = await this.$store.dispatch('fetchCurrency') || {rates: {
             'USD': 1,
-            'GEL': 'not info',
-            'EUR': 'not info',
-            'RUB': 'not info'
+            'GEL': 'not info or you need to add key to rates',
+            'EUR': 'not info or you need to add key to rates',
+            'RUB': 'not info or you need to add key to rates'
           }, date: new Date()}
         this.loading = false
       }
@@ -49,9 +49,9 @@
     async mounted() {
       this.currency = await this.$store.dispatch('fetchCurrency') || {rates: {
           'USD': 1,
-          'GEL': 'not info',
-          'EUR': 'not info',
-          'RUB': 'not info'
+          'GEL': 'not info or you need to add key to rates',
+          'EUR': 'not info or you need to add key to rates',
+          'RUB': 'not info or you need to add key to rates'
         }, date: new Date()}
       this.loading = false
     },
