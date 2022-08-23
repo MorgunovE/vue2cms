@@ -18,12 +18,18 @@
     props: ['rates'],
     data() {
       return {
-        currencies: ['USD', 'GEL', 'EUR', 'RUB']
+        currencies: ['USD', 'GEL', 'EUR', 'RUB'],
+        notInfoRates: {
+          'USD': 1,
+          'GEL': 0,
+          'EUR': 0,
+          'RUB': 0
+        }
       }
     },
     methods: {
       getCurrency(currency) {
-        return Math.floor(this.$store.getters.info.bill * this.rates[currency])
+        return isNaN(Math.floor(this.$store.getters.info.bill * this.rates[currency])) ? Math.floor(this.$store.getters.info.bill * this.notInfoRates[currency]) : Math.floor(this.$store.getters.info.bill * this.rates[currency])
       }
     }
   }

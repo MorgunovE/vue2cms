@@ -23,7 +23,7 @@
           {title: 'Account', url: '/'},
           {title: 'History', url: '/history'},
           {title: 'Plan', url: '/planning'},
-          {title: 'New item', url: '/record'},
+          {title: 'New record', url: '/record'},
           {title: 'Category', url: '/categories'},
         ]
       }

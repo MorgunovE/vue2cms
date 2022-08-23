@@ -37,13 +37,22 @@
     methods: {
       async refresh() {
         this.loading = true
-        this.currency = await this.$store.dispatch('fetchCurrency')
+        this.currency = await this.$store.dispatch('fetchCurrency') || {rates: {
+            'USD': 1,
+            'GEL': 'not info',
+            'EUR': 'not info',
+            'RUB': 'not info'
+          }, date: new Date()}
         this.loading = false
       }
     },
     async mounted() {
-      this.currency = await this.$store.dispatch('fetchCurrency')
-      console.log(this.currency)
+      this.currency = await this.$store.dispatch('fetchCurrency') || {rates: {
+          'USD': 1,
+          'GEL': 'not info',
+          'EUR': 'not info',
+          'RUB': 'not info'
+        }, date: new Date()}
       this.loading = false
     },
     components: {HomeCurrency, HomeBill}

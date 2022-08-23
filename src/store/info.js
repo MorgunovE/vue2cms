@@ -23,7 +23,6 @@ export default {
         throw e
       }
     },
-    // 1-14
     async updateInfo({dispatch, commit, getters}, toUpdate) {
       try {
         const uid = await dispatch('getUId')
