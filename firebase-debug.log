@@ -1,0 +1,32 @@
+[debug] [2022-08-24T12:48:04.628Z] ----------------------------------------------------------------------
+[debug] [2022-08-24T12:48:04.630Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\1\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-08-24T12:48:04.630Z] CLI Version:   11.1.0
+[debug] [2022-08-24T12:48:04.630Z] Platform:      win32
+[debug] [2022-08-24T12:48:04.630Z] Node Version:  v16.14.2
+[debug] [2022-08-24T12:48:04.631Z] Time:          Wed Aug 24 2022 16:48:04 GMT+0400 (Грузия, стандартное время)
+[debug] [2022-08-24T12:48:04.632Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-08-24T12:48:04.639Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-08-24T12:48:04.639Z] > authorizing via signed-in user (master77787@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\home\projects\JS\Vue\vue2cms
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
