@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>New item</h3>
+      <h3>{{'New record'|localize}}</h3>
     </div>
     <Loader v-if="loading"/>
-    <p class="center" v-else-if="!categories.length">Haven't categories.
-      <router-link to="/categories">Add new category</router-link>
+    <p class="center" v-else-if="!categories.length">{{"Haven't categories"|localize}}.
+      <router-link to="/categories">{{'Add new category'|localize}}</router-link>
     </p>
     <form class="form" v-else @submit.prevent="submitHandler">
       <div class="input-field">
@@ -17,7 +17,7 @@
           >{{category.title}}
           </option>
         </select>
-        <label>Choose category</label>
+        <label>{{'Choose category'|localize}}</label>
       </div>
       
       <p>
@@ -29,7 +29,7 @@
             value="income"
             v-model="type"
           />
-          <span>Income</span>
+          <span>{{'Income'|localize}}</span>
         </label>
       </p>
       
@@ -42,7 +42,7 @@
             value="outcome"
             v-model="type"
           />
-          <span>Outcome</span>
+          <span>{{'Outcome'|localize}}</span>
         </label>
       </p>
       
@@ -53,8 +53,8 @@
           v-model.number="amount"
           :class="{invalid: $v.amount.$dirty && !$v.amount.minValue}"
         >
-        <label for="amount">Sum</label>
-        <span v-if="$v.amount.$dirty && !$v.amount.minValue" class="helper-text invalid">Min value {{$v.amount.$params.minValue.min}}</span>
+        <label for="amount">{{'Sum'|localize}}</label>
+        <span v-if="$v.amount.$dirty && !$v.amount.minValue" class="helper-text invalid">{{'Min value'|localize}} {{$v.amount.$params.minValue.min}}</span>
       </div>
       
       <div class="input-field">
@@ -64,14 +64,14 @@
           v-model="description"
           :class="{invalid: $v.description.$dirty && !$v.description.required}"
         >
-        <label for="description">Description</label>
+        <label for="description">{{'Description'|localize}}</label>
         <span
           v-if="$v.description.$dirty && !$v.description.required"
-          class="helper-text invalid">Enter name of category</span>
+          class="helper-text invalid">{{'Enter name of category'|localize}}</span>
       </div>
       
       <button class="btn waves-effect waves-light" type="submit">
-        Create
+        {{'Create'|localize}}
         <i class="material-icons right">send</i>
       </button>
     </form>
@@ -83,7 +83,12 @@
   import {mapGetters} from 'vuex'
   
   export default {
-    name: 'Record',
+    name: 'record',
+    metaInfo() {
+      return {
+        title: this.$title('Record')
+      }
+    },
     data() {
       return {
         loading: true,

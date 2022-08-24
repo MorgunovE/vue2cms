@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Price</h3>
+      <h3>{{'Price'|localize}}</h3>
       
       <button class="btn waves-effect waves-light btn-small" @click="refresh">
         <i class="material-icons">refresh</i>
@@ -25,9 +25,15 @@
 <script>
   import HomeBill from '@/components/HomeBill'
   import HomeCurrency from '@/components/HomeCurrency'
+  import localizeFilter from '@/filters/localize.filter'
   
   export default {
     name: 'home',
+    metaInfo() {
+      return {
+        title: this.$title('Home')
+      }
+    },
     data() {
       return {
         loading: true,
@@ -39,9 +45,9 @@
         this.loading = true
         this.currency = await this.$store.dispatch('fetchCurrency') || {rates: {
             'USD': 1,
-            'GEL': 'not info or you need to add key to rates',
-            'EUR': 'not info or you need to add key to rates',
-            'RUB': 'not info or you need to add key to rates'
+            'GEL': localizeFilter('not info or you need to add key to rates'),
+            'EUR': localizeFilter('not info or you need to add key to rates'),
+            'RUB': localizeFilter('not info or you need to add key to rates')
           }, date: new Date()}
         this.loading = false
       }
@@ -49,9 +55,9 @@
     async mounted() {
       this.currency = await this.$store.dispatch('fetchCurrency') || {rates: {
           'USD': 1,
-          'GEL': 'not info or you need to add key to rates',
-          'EUR': 'not info or you need to add key to rates',
-          'RUB': 'not info or you need to add key to rates'
+          'GEL': localizeFilter('not info or you need to add key to rates'),
+          'EUR': localizeFilter('not info or you need to add key to rates'),
+          'RUB': localizeFilter('not info or you need to add key to rates')
         }, date: new Date()}
       this.loading = false
     },

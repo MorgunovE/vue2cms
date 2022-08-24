@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Categories</h3>
+      <h3>{{'Categories'|localize}}</h3>
     </div>
     <section>
       <Loader v-if="loading"/>
@@ -13,7 +13,7 @@
           :key="categories.length + updateCount"
           @updated="updateCategories"
         />
-        <p v-else class="center">Haven't categories</p>
+        <p v-else class="center">{{"Haven't categories"|localize}}</p>
       </div>
     </section>
   </div>
@@ -26,6 +26,11 @@
   
   export default {
     name: "Categories",
+    metaInfo() {
+      return {
+        title: this.$title('Categories')
+      }
+    },
     data() {
       return {
         categories: [],

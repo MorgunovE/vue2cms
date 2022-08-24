@@ -2,7 +2,7 @@
   <div class="col s12 m6">
     <div>
       <div class="page-subtitle">
-        <h4>Edit</h4>
+        <h4>{{'Edit'|localize}}</h4>
       </div>
       
       <form @submit.prevent="submitHandler">
@@ -10,7 +10,7 @@
           <select ref="select" v-model="current">
             <option v-for="category in categories" :key="category.id" :value="category.id">{{category.title}}</option>
           </select>
-          <label>Choose category</label>
+          <label>{{'Choose category'|localize}}</label>
         </div>
         
         <div class="input-field">
@@ -20,10 +20,10 @@
             v-model="title"
             :class="{invalid: $v.title.$dirty && !$v.title.required}"
           >
-          <label for="name">Name</label>
+          <label for="name">{{'Name'|localize}}</label>
           <span
             v-if="$v.title.$dirty && !$v.title.required"
-            class="helper-text invalid">Enter name of category</span>
+            class="helper-text invalid">{{'Enter name of category'|localize}}</span>
         </div>
         
         <div class="input-field">
@@ -33,14 +33,14 @@
             v-model.number="limit"
             :class="{invalid: $v.limit.$dirty && !$v.limit.minValue}"
           >
-          <label for="limit">Limit</label>
+          <label for="limit">{{'Limit'|localize}}</label>
           <span
             v-if="$v.limit.$dirty && !$v.limit.minValue"
-            class="helper-text invalid">Min value {{$v.limit.$params.minValue.min}}</span>
+            class="helper-text invalid">{{'Min value'|localize}} {{$v.limit.$params.minValue.min}}</span>
         </div>
         
         <button class="btn waves-effect waves-light" type="submit">
-          Update
+          {{'Update'|localize}}
           <i class="material-icons right">send</i>
         </button>
       </form>

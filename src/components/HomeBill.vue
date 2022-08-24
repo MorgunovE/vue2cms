@@ -2,7 +2,7 @@
   <div class="col s12 m6 l4">
     <div class="card light-blue bill-card">
       <div class="card-content white-text">
-        <span class="card-title">Price in currency</span>
+        <span class="card-title">{{'Price in currency'|localize}}</span>
         
         <p v-for="cur of currencies" :key="cur" class="currency-line">
           <span>{{getCurrency(cur) | currency(cur)}}</span>

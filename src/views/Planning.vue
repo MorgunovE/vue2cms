@@ -1,18 +1,18 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Planing</h3>
+      <h3>{{'Planing'|localize}}</h3>
       <h4>{{info.bill | currency('USD')}}</h4>
     </div>
     <Loader v-if="loading"/>
-    <p class="center" v-else-if="!categories.length">Haven't categories.
-      <router-link to="/categories">Add new category</router-link>
+    <p class="center" v-else-if="!categories.length">{{"Haven't categories"|localize}}.
+      <router-link to="/categories">{{'Add new category'|localize}}</router-link>
     </p>
     <section v-else>
       <div v-for="category of categories" :key="category.id">
         <p>
           <strong>{{category.title}}:</strong>
-          {{category.spend | currency('USD')}} from {{category.limit | currency('USD')}}
+          {{category.spend | currency('USD')}} {{'from'|localize}} {{category.limit | currency('USD')}}
         </p>
         <div class="progress" v-tooltip="category.tooltip">
           <div
@@ -32,6 +32,11 @@
   
   export default {
     name: 'planning',
+    metaInfo() {
+      return {
+        title: this.$title('Planing')
+      }
+    },
     data() {
       return {
         loading: true,

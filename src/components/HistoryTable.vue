@@ -3,11 +3,11 @@
     <thead>
     <tr>
       <th>#</th>
-      <th>Sum</th>
-      <th>Date</th>
-      <th>Category</th>
-      <th>Type</th>
-      <th>Open</th>
+      <th>{{'Sum'|localize}}</th>
+      <th>{{'Date'|localize}}</th>
+      <th>{{'Category'|localize}}</th>
+      <th>{{'Type'|localize}}</th>
+      <th>{{'Open'|localize}}</th>
     </tr>
     </thead>
     

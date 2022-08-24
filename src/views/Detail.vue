@@ -3,7 +3,7 @@
     <Loader v-if="loading"/>
     <div v-else-if="record">
       <div class="breadcrumb-wrap">
-        <router-link to="/history" class="breadcrumb">History</router-link>
+        <router-link to="/history" class="breadcrumb">{{'History'|localize}}</router-link>
         <a @click.prevent class="breadcrumb">
           {{record.type}}
         </a>
@@ -25,13 +25,18 @@
         </div>
       </div>
     </div>
-    <p class="center" v-else>Haven't record with this id = {{$route.params.id}}</p>
+    <p class="center" v-else>{{"Haven't record with this id"|localize}} = {{$route.params.id}}</p>
   </div>
 </template>
 
 <script>
   export default {
     name: 'detail',
+    metaInfo() {
+      return {
+        title: this.$title('Detail')
+      }
+    },
     data() {
       return {
         record: null,

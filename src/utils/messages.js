@@ -1,7 +1,9 @@
+import localizeFilter from '@/filters/localize.filter'
+
 export default {
-  'logout': 'You logout',
-  'login': 'Please SingIn',
-  'auth/user-not-found': 'User with this email not register',
-  'auth/wrong-password': 'Wrong password or email',
-  'auth/email-already-in-use': 'This email has already use'
+  'logout': localizeFilter('You logout'),
+  'login': localizeFilter('Please SingIn'),
+  'auth/user-not-found': localizeFilter('User with this email not register'),
+  'auth/wrong-password': localizeFilter('Wrong password or email'),
+  'auth/email-already-in-use': localizeFilter('This email has already use')
 }

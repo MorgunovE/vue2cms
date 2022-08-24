@@ -25,14 +25,14 @@ export default new Vuex.Store({
   actions: {
     async fetchCurrency() {
       const key = process.env.VUE_APP_FIXER
-      // const res = await fetch("https://api.apilayer.com/fixer/latest?symbols=USD,EUR,RUB,GEL&base=USD", {
-      //   method: 'GET',
-      //   redirect: 'follow',
-      //   headers: {
-      //     "apikey": key
-      //   }
-      // })
-      //   return await res.json()
+      const res = await fetch("https://api.apilayer.com/fixer/latest?symbols=USD,EUR,RUB,GEL&base=USD", {
+        method: 'GET',
+        redirect: 'follow',
+        headers: {
+          "apikey": key
+        }
+      })
+        return await res.json()
     }
   },
   modules: {

@@ -1,7 +1,7 @@
 <template>
   <form class="card auth-card" @submit.prevent="submitHandler">
     <div class="card-content">
-      <span class="card-title">Home Account</span>
+      <span class="card-title">{{'Home Account'|localize}}</span>
       <div class="input-field">
         <input
           id="email"
@@ -9,13 +9,13 @@
           v-model.trim="email"
           :class="{invalid: ($v.email.$dirty && !$v.email.required) || ($v.email.$dirty && !$v.email.email)}"
         >
-        <label for="email">Email</label>
+        <label for="email">{{'Email'|localize}}</label>
         <small
           v-if="$v.email.$dirty && !$v.email.required"
-          class="helper-text invalid">Please enter your email</small>
+          class="helper-text invalid">{{'Please enter your email'|localize}}</small>
         <small
           v-else-if="$v.email.$dirty && !$v.email.email"
-          class="helper-text invalid">Please enter correct email</small>
+          class="helper-text invalid">{{'Please enter correct email'|localize}}</small>
       </div>
       <div class="input-field">
         <input
@@ -24,13 +24,13 @@
           v-model.trim="password"
           :class="{invalid: ($v.password.$dirty && !$v.password.required) || ($v.password.$dirty && !$v.password.minLength)}"
         >
-        <label for="password">Password</label>
+        <label for="password">{{'Password'|localize}}</label>
         <small
           v-if="$v.password.$dirty && !$v.password.required"
-          class="helper-text invalid">Please enter your password</small>
+          class="helper-text invalid">{{'Please enter your password'|localize}}</small>
         <small
           v-else-if="$v.password.$dirty && !$v.password.minLength"
-          class="helper-text invalid">Password can't be lower {{$v.password.$params.minLength.min}} symbols</small>
+          class="helper-text invalid">{{"Password can't be lower"|localize}} {{$v.password.$params.minLength.min}} {{'symbols'|localize}}</small>
       </div>
       <div class="input-field">
         <input
@@ -39,16 +39,16 @@
           v-model.trim="name"
           :class="{invalid: $v.name.$dirty && !$v.name.required}"
         >
-        <label for="name">Name</label>
+        <label for="name">{{'Name'|localize}}</label>
         <small
           class="helper-text invalid"
           v-if="$v.name.$dirty && !$v.name.required"
-        >Enter your name</small>
+        >{{'Enter your name'|localize}}</small>
       </div>
       <p>
         <label>
           <input type="checkbox" v-model="agree"/>
-          <span>Agree with rules</span>
+          <span>{{'Agree with rules'|localize}}</span>
         </label>
       </p>
     </div>
@@ -58,14 +58,14 @@
           class="btn waves-effect waves-light auth-submit"
           type="submit"
         >
-          Sing Up
+          {{'Sing Up'|localize}}
           <i class="material-icons right">send</i>
         </button>
       </div>
       
       <p class="center">
-        Do you have account?
-        <router-link to="/login">Sing In!</router-link>
+        {{'Do you have account?'|localize}}
+        <router-link to="/login">{{'Sing In'|localize}}!</router-link>
       </p>
     </div>
   </form>
@@ -75,7 +75,12 @@
   import {email, required, minLength} from 'vuelidate/lib/validators'
   
   export default {
-    name: "Register",
+    name: "register",
+    metaInfo() {
+      return {
+        title: this.$title('Register')
+      }
+    },
     data() {
       return {
         email: '',
