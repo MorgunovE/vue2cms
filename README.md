@@ -1,5 +1,8 @@
 # vue2cms
 
+* https://vue2-crm-42dfb.web.app/
+* https://vue2-crm-42dfb.firebaseapp.com/
+
 ## Project setup
 ```
 npm install
